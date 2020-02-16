@@ -17,9 +17,17 @@ function findAllAlbums(callback) {
     })
 }
 
+function findAlbumsByName(name, callback) {
+    albumsModel.find({album_name: name}).exec(function (err, albums) {
+        if (!err) {
+            callback(albums);
+        }
+    })
+}
+
 function deleteAlbum(id,callback) {
     albumsModel.findByIdAndRemove(id,function (err) {
         if(!err) callback({})
     })
 }
-module.exports={addAlbum,findAllAlbums,deleteAlbum}
+module.exports={addAlbum,findAllAlbums,deleteAlbum,findAlbumsByName}

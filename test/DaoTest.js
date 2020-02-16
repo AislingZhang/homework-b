@@ -25,6 +25,15 @@ describe("测试singersDao、albumsDao、userDao",function () {
 
     })
 
+    it("测试据名字查找歌手",function (done) {
+        let name = 'lily';
+        singersDao.findSingersByName(name, function (res) {
+            assert.ok(res);
+            res.forEach(res=>console.log(res._id))
+            done();
+        })
+    })
+
     it('测试查询所有歌手',function (done) {
         singersDao.findAllSingers(function (singers) {
             assert.ok(singers.length>0)
@@ -32,6 +41,8 @@ describe("测试singersDao、albumsDao、userDao",function () {
             done()
         })
     })
+
+
     it("测试删除歌手",function (done) {
         singersDao.deleteSinger("5e47ddaab0a13c757c4635ce",function ({}) {
             console.log({})
@@ -54,6 +65,18 @@ describe("测试singersDao、albumsDao、userDao",function () {
             done()
         })
     })
+
+    it("测试据名字查找唱片",function (done) {
+        let name = '123';
+        albumsDao.findAlbumsByName(name, function (res) {
+            assert.ok(res);
+            res.forEach(res=>console.log(res._id))
+            done();
+        })
+    })
+
+
+
     it("测试删除唱片",function (done) {
         albumsDao.deleteAlbum("5e1683b9ccec4914dc8d2fdc",function ({}) {
             console.log({})

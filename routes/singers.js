@@ -8,6 +8,17 @@ router.get('/',function (req,res) {
     })
 });
 
+router.get('/getSingersByName', function(req, res, next) {
+    let params = req.query;
+    let name = params.name;
+    console.log(params);
+    if (name) {
+        singersDao.findSingersByName(name, function (singers) {
+            res.json(singers);
+        })
+    }
+});
+
 router.post('/',function (req,res) {
     let singer=req.body
     singersDao.addSinger(singer,function (ns) {

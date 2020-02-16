@@ -17,9 +17,19 @@ function findAllSingers(callback) {
     })
 }
 
+function findSingersByName(name, callback) {
+    singersModel.find({singer_name: name}).exec(function (err, singers) {
+        if (!err) {
+            callback(singers);
+        }
+    })
+}
+
 function deleteSinger(id,callback) {
     singersModel.findByIdAndRemove(id,function (err) {
         if(!err) callback({})
     })
 }
-module.exports={addSinger,findAllSingers,deleteSinger}
+
+
+module.exports={addSinger,findAllSingers,deleteSinger,findSingersByName}
