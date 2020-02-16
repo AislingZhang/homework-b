@@ -102,17 +102,25 @@ describe("测试singersDao、albumsDao、userDao",function () {
 
 
 
-    it("测试添加用户",function (done) {
-        let user={user_id: "1", user_name: "zhanglin1",password:"123456"}
-        usersDao.addUser(user,function (nu) {
-            assert.ok(nu._id!=null)
-            done()
-        })
-    })
+    // it("测试添加用户",function (done) {
+    //     let user={user_id: "1", user_name: "zhanglin1",password:"123456"}
+    //     usersDao.addUser(user,function (nu) {
+    //         assert.ok(nu._id!=null)
+    //         done()
+    //     })
+    // })
 
     it("测试查询用户+密码",function (done) {
         let user={username:'zhanglin',password: 123456};
         usersDao.findUser(user, function (res) {
+            assert.ok(res.code == 0);
+            done();
+        })
+    })
+
+    it("测试添加用户",function (done) {
+        let user={user_id:10,username:'aisling',password: '123456'};
+        usersDao.addUser(user, function (res) {
             assert.ok(res.code == 0);
             done();
         })

@@ -2,14 +2,25 @@ const mongoose=require('mongoose')
 
 let usersModel=mongoose.model("users")
 
-function addUser(user,callback) {
-    let a=  usersModel.create(user,function (err,newUserDoc) {
-        if(!err)
-        {
-            callback(newUserDoc.toObject())
+function addUser(user, callback) {
+
+    usersModel.create(user, function (err, newUser) {
+        if (!err) {
+            callback({
+                code: 0, // 0 表示成功，1表示失败
+                user: newUser.toObject()
+            })
+        } else {
+            callback({
+                code: 1,
+                msg: err
+            })
         }
     })
 }
+
+
+
 
 function findUser(userInfo, callback) {
     usersModel.findOne({username: userInfo.username, password: userInfo.password}).exec(function (err, user) {

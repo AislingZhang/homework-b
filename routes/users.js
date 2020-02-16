@@ -40,7 +40,7 @@ router.post('/login', function(req, res, next) {
 
 });
 
-router.post('/register', function(req, res, next) {
+router.post('/', function(req, res, next) {
   let userInfo = req.body;
   if (userInfo) {
     usersDao.addUser(userInfo, function (response) {
