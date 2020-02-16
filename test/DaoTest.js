@@ -50,6 +50,14 @@ describe("测试singersDao、albumsDao、userDao",function () {
         })
     })
 
+    it("测试初始化歌手数据",function (done) {
+
+        singersDao.initSingersData(function (res) {
+            assert.ok(res.code == 0);
+            done();
+        })
+    })
+
     it("测试添加唱片",function (done) {
         let album={album_id: "3751222", album_name: "测试唱片1111"}
         albumsDao.addAlbum(album,function (na) {
@@ -83,6 +91,16 @@ describe("测试singersDao、albumsDao、userDao",function () {
             done()
         })
     })
+
+    it("测试初始化专辑数据",function (done) {
+
+        albumsDao.initAlbumsData(function (res) {
+            assert.ok(res.code == 0);
+            done();
+        })
+    })
+
+
 
     it("测试添加用户",function (done) {
         let user={user_id: "1", user_name: "zhanglin1",password:"123456"}
