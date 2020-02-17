@@ -5,7 +5,7 @@ let app=require('../app');
 let server=http.createServer(app);
 
 
-mongoose.connect("mongodb://localhost/demo01",function (err) {
+mongoose.connect("mongodb://47.92.235.190:27017/demo01",function (err) {
 
     if(!err){
         console.log("mongodb已连接！")

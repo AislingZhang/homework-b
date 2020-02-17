@@ -8,7 +8,7 @@ const assert=require('assert')
 
 describe("测试singersDao、albumsDao、userDao",function () {
     before(function () {
-        mongoose.connect('mongodb://localhost/demo01',function (err) {
+        mongoose.connect('mongodb://47.92.235.190:27017/demo01',function (err) {
         })
     })
     after(function () {
